@@ -55,6 +55,7 @@ class Login extends Component {
                 name="name-input"
                 id="name-input"
                 data-testid="login-name-input"
+                placeholder="Digite seu nome"
                 value={ name }
                 onChange={ (event) => this.handleChange(event) }
               />
