@@ -6,13 +6,17 @@ import Loading from '../components/Loading';
 class Login extends Component {
   state = {
     name: '',
+    email: '',
+    image: '',
+    description: '',
     isDisabled: true,
     isLoading: false,
   };
 
-  enableButton = (value) => {
+  enableButton = () => {
+    const { name } = this.state;
     const minLength = 3;
-    if (value.length >= minLength) {
+    if (name.length >= minLength) {
       this.setState({ isDisabled: false });
     } else {
       this.setState({ isDisabled: true });
@@ -20,9 +24,9 @@ class Login extends Component {
   };
 
   handleChange = (event) => {
-    const { target: { value } } = event;
+    const { target: { value, name } } = event;
 
-    this.setState({ name: value }, this.enableButton(value));
+    this.setState({ [name]: value }, this.enableButton);
   };
 
   userLogin = async (user) => {
@@ -34,10 +38,13 @@ class Login extends Component {
   };
 
   render() {
-    const { isDisabled, name, isLoading } = this.state;
+    const { isDisabled, name, isLoading, email, image, description } = this.state;
 
     const user = {
       name,
+      email,
+      image,
+      description,
     };
 
     return (
@@ -52,11 +59,41 @@ class Login extends Component {
             <label htmlFor="name-input">
               <input
                 type="text"
-                name="name-input"
+                name="name"
                 id="name-input"
                 data-testid="login-name-input"
-                placeholder="Digite seu nome"
+                placeholder="Usuário"
                 value={ name }
+                onChange={ (event) => this.handleChange(event) }
+              />
+            </label>
+            <label htmlFor="email-input">
+              <input
+                type="email"
+                name="email"
+                id="email-input"
+                placeholder="E-mail"
+                value={ email }
+                onChange={ (event) => this.handleChange(event) }
+              />
+            </label>
+            <label htmlFor="image-input">
+              <input
+                type="text"
+                name="image"
+                id="image-input"
+                placeholder="Caminho para a imagem"
+                value={ image }
+                onChange={ (event) => this.handleChange(event) }
+              />
+            </label>
+            <label htmlFor="description-input">
+              <input
+                type="textarea"
+                name="description"
+                id="description-input"
+                placeholder="Descrição"
+                value={ description }
                 onChange={ (event) => this.handleChange(event) }
               />
             </label>

@@ -22,7 +22,7 @@ class Header extends Component {
     return (userData
       ? (
         <header data-testid="header-component">
-          <p data-testid="header-user-name">{`Olá, ${userData.name}!`}</p>
+          <p data-testid="header-user-name">{userData.name}</p>
           <Link to="/search" data-testid="link-to-search">Pesquisa</Link>
           <Link to="/favorites" data-testid="link-to-favorites">Favoritos</Link>
           <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
