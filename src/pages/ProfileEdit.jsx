@@ -72,7 +72,6 @@ class ProfileEdit extends Component {
 
     return (
       <div data-testid="page-profile-edit">
-        ProfileEdit
         <Header />
         <h1>Editar perfil</h1>
         {isLoading ? <Loading />
