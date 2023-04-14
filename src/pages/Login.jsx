@@ -102,7 +102,7 @@ class Login extends Component {
               disabled={ isDisabled }
               onClick={ () => this.userLogin(user) }
             >
-              Entrar
+              Atualizar
             </button>
           </div>)
     );

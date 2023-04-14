@@ -13,7 +13,7 @@ const musicObjectPropTypes = {
   collectionName: PropTypes.string.isRequired,
   collectionPrice: PropTypes.number.isRequired,
   collectionViewUrl: PropTypes.string.isRequired,
-  contentAdvisoryRating: PropTypes.string.isRequired,
+  contentAdvisoryRating: PropTypes.string,
   country: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
   discCount: PropTypes.number.isRequired,
