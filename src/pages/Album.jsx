@@ -3,21 +3,28 @@ import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   state = {
     musics: '',
     collectionInfo: '',
+    favoriteMusics: '',
   };
 
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const response = await getMusics(id);
-    this.setState({ musics: response.slice(1), collectionInfo: response[0] });
+    this.setState(
+      { musics: response.slice(1),
+        collectionInfo: response[0],
+        favoriteMusics: await getFavoriteSongs(),
+      },
+    );
   }
 
   render() {
-    const { musics, collectionInfo } = this.state;
+    const { musics, collectionInfo, favoriteMusics } = this.state;
 
     return (
       <div data-testid="page-album">
@@ -30,10 +37,12 @@ class Album extends Component {
               <h1 data-testid="album-name">{collectionInfo.collectionName}</h1>
               {musics.map((music, index) => (
                 <MusicCard
+                  favoriteMusics={ favoriteMusics }
                   key={ index }
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
                   trackId={ music.trackId }
+                  music={ music }
                 />
               ))}
             </div>) : null}
