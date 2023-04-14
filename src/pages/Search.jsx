@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
 
 class Search extends Component {
   state = {
-    artist: '',
+    inputArtist: '',
     isDisabled: true,
+    artistName: '',
+    musics: '',
+    didAPIrespond: false,
   };
 
   enableButton = (value) => {
@@ -18,11 +23,22 @@ class Search extends Component {
 
   handleChange = (event) => {
     const { target: { value } } = event;
-    this.setState({ artist: value }, this.enableButton(value));
+    this.setState({ inputArtist: value }, this.enableButton(value));
+  };
+
+  handleClick = async () => {
+    const { inputArtist } = this.state;
+    const response = await searchAlbumsAPI(inputArtist);
+    this.setState({
+      inputArtist: '',
+      musics: response,
+      didAPIrespond: true,
+      artistName: inputArtist,
+    });
   };
 
   render() {
-    const { artist, isDisabled } = this.state;
+    const { inputArtist, isDisabled, didAPIrespond, artistName, musics } = this.state;
 
     return (
       <div data-testid="page-search">
@@ -33,7 +49,7 @@ class Search extends Component {
             type="text"
             name="artist-input"
             id="artist-input"
-            value={ artist }
+            value={ inputArtist }
             onChange={ (event) => this.handleChange(event) }
             placeholder="Nome do artista"
             data-testid="search-artist-input"
@@ -42,9 +58,26 @@ class Search extends Component {
         <button
           data-testid="search-artist-button"
           disabled={ isDisabled }
+          onClick={ this.handleClick }
         >
           Pesquisar
         </button>
+        {artistName
+          && didAPIrespond ? <p>{`Resultado de álbuns de: ${artistName}`}</p> : null}
+        {musics.length > 0 ? musics.map((music, index) => (
+          <div key={ index }>
+            <p>{music.artistName}</p>
+            <img src={ music.artworkUrl100 } alt={ music.artistName } />
+            <p>{music.collectionName}</p>
+            <Link
+              to={ `/album/${music.collectionId}` }
+              data-testid={ `link-to-album-${music.collectionId}` }
+            >
+              Músicas
+            </Link>
+          </div>
+        )) : null}
+        {didAPIrespond && musics.length === 0 ? <p>Nenhum álbum foi encontrado</p> : null}
       </div>
     );
   }
