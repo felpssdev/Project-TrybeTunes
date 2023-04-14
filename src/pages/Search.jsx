@@ -64,19 +64,21 @@ class Search extends Component {
         </button>
         {artistName
           && didAPIrespond ? <p>{`Resultado de álbuns de: ${artistName}`}</p> : null}
-        {musics.length > 0 ? musics.map((music, index) => (
-          <div key={ index }>
-            <p>{music.artistName}</p>
-            <img src={ music.artworkUrl100 } alt={ music.artistName } />
-            <p>{music.collectionName}</p>
-            <Link
-              to={ `/album/${music.collectionId}` }
-              data-testid={ `link-to-album-${music.collectionId}` }
-            >
-              Músicas
-            </Link>
-          </div>
-        )) : null}
+        <section>
+          {musics.length > 0 ? musics.map((music, index) => (
+            <div key={ index }>
+              <p>{music.artistName}</p>
+              <img src={ music.artworkUrl100 } alt={ music.artistName } />
+              <p>{music.collectionName}</p>
+              <Link
+                to={ `/album/${music.collectionId}` }
+                data-testid={ `link-to-album-${music.collectionId}` }
+              >
+                Músicas
+              </Link>
+            </div>
+          )) : null}
+        </section>
         {didAPIrespond && musics.length === 0 ? <p>Nenhum álbum foi encontrado</p> : null}
       </div>
     );
