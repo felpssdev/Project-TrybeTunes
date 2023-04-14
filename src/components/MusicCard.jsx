@@ -15,6 +15,11 @@ class MusicCard extends Component {
     this.updateCheck(music);
   }
 
+  componentDidUpdate() {
+    const { updateSongs } = this.props;
+    updateSongs();
+  }
+
   updateCheck = (music) => {
     const { favoriteMusics } = this.props;
     if (favoriteMusics.length > 0) {
@@ -80,6 +85,7 @@ MusicCard.propTypes = {
   trackId: PropTypes.number.isRequired,
   favoriteMusics: PropTypes.arrayOf(PropTypes.shape(musicObjectPropTypes)).isRequired,
   music: PropTypes.shape(musicObjectPropTypes).isRequired,
+  updateSongs: PropTypes.func.isRequired,
 };
 
 export default MusicCard;

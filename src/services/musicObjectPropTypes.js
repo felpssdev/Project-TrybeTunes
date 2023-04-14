@@ -18,7 +18,7 @@ const musicObjectPropTypes = {
   currency: PropTypes.string.isRequired,
   discCount: PropTypes.number.isRequired,
   discNumber: PropTypes.number.isRequired,
-  isStreamable: PropTypes.bool.isRequired,
+  isStreamable: PropTypes.bool,
   kind: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   primaryGenreName: PropTypes.string.isRequired,

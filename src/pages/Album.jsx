@@ -23,6 +23,11 @@ class Album extends Component {
     );
   }
 
+  updateSongs = async () => {
+    const newFavorites = await getFavoriteSongs();
+    this.setState({ favoriteMusics: newFavorites });
+  };
+
   render() {
     const { musics, collectionInfo, favoriteMusics } = this.state;
 
@@ -43,6 +48,7 @@ class Album extends Component {
                   previewUrl={ music.previewUrl }
                   trackId={ music.trackId }
                   music={ music }
+                  updateSongs={ this.updateSongs }
                 />
               ))}
             </div>) : null}
