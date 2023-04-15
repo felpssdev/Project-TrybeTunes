@@ -35,14 +35,22 @@ class Album extends Component {
     return (
       <div data-testid="page-album" className='page-album'>
         <Header />
-        <h1 data-testid="artist-name">{collectionInfo.artistName}</h1>
-        <h1 data-testid="album-name">{collectionInfo.collectionName}</h1>
+        <div className='section-album-info'>
+          <img src={collectionInfo.artworkUrl100} alt={collectionInfo.collectionName} />
+          {collectionInfo ?
+            <div className='album-info-texts'>
+              <p>Álbum</p>
+              <h1 data-testid="album-name">{collectionInfo.collectionName}</h1>
+              <p><span>by: </span>{collectionInfo.artistName}<span> · </span><span>{collectionInfo.trackCount}<span> músicas</span></span></p>
+            </div> : null}
+        </div>
         <div className='musics'>
           {musics.length > 0
             ? (
               <div>
                 {musics.map((music, index) => (
                   <MusicCard
+                    trackTimeMillis={ music.trackTimeMillis }
                     favoriteMusics={ favoriteMusics }
                     key={ index }
                     trackName={ music.trackName }

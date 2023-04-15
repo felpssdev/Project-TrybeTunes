@@ -10,5 +10,5 @@
 main {
   height: 1000px;
   font-family: Lato, sans-serif;
-  background-image: linear-gradient(to bottom, #111111, #000000);
+  background: linear-gradient(to bottom, #000000, #333333);
 }
