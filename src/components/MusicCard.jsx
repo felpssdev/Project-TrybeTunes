@@ -30,7 +30,14 @@ class MusicCard extends Component {
 
   componentDidMount() {
     const { music, trackTimeMillis } = this.props;
+    const audio = this.audioRef.current;
+
     this.setState({ trackTime: this.formatTime(trackTimeMillis)})
+
+    audio.addEventListener('ended', () => {
+      this.setState({ isPlaying: false });
+    });
+    
     this.updateCheck(music);
   }
 
@@ -55,11 +62,11 @@ class MusicCard extends Component {
     const { checked } = this.state;
 
     if (checked) {
-      this.setState({ checked: false, isLoading: true });
+      this.setState({ checked: false, isLoading: true, isPlaying: false });
       await removeSong(track);
       this.setState({ isLoading: false });
     } else {
-      this.setState({ checked: true, isLoading: true });
+      this.setState({ checked: true, isLoading: true, isPlaying: false });
       await addSong(track);
       this.setState({ isLoading: false });
     }
@@ -74,7 +81,7 @@ class MusicCard extends Component {
   
 
   render() {
-    const { trackName, previewUrl, trackId, trackTimeMillis, music } = this.props;
+    const { trackName, previewUrl, trackId, music } = this.props;
     const { checked, isLoading, trackTime } = this.state;
     const buttonText = this.state.isPlaying ? "Pause" : "Play";
 

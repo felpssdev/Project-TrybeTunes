@@ -38,7 +38,7 @@
 }
 
 .login-btn:disabled {
-  background-color: #c3e6c3; /* Verde mais claro */
+  background-color: #a2cea2; /* Verde mais claro */
   color: white;
   cursor: not-allowed;
 }

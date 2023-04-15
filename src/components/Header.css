@@ -26,18 +26,19 @@ header {
 
 .nav-links p {
   color: #CCCCCC;
-  padding: 12px;
+  padding: 6px 12px 8px;
   transition: all 0.2s ease-in-out;
+  border-radius: 20px;
 }
 
 .nav-links p:hover {
-  color: white;
-  font-size: 17px;
+  background-color: #CCCCCC;
+  color: black;
+  font-weight: 700;
+  transform: scale(1.05);
   height: 17px;
 }
 
 .logo {
   height: 60px;
 }
-
-

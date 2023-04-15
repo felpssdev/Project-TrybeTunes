@@ -34,13 +34,13 @@
 }
 
 .search-input button:disabled {
-  background-color: #c3e6c3; 
+  background-color: #a2cea2;
   color: white;
   cursor: not-allowed;
 }
 
 .search-albuns {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   margin-top: 30px;
   height: 650px;
@@ -61,13 +61,13 @@
   flex-direction: column;
   text-align: center;
   justify-content: space-evenly;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.08);
   border-radius: 5px;
   transition: all 0.2s ease-in-out;
 }
 
 .albuns:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .albuns img {
@@ -94,7 +94,7 @@
 
 .circle {
   align-self: center;
-  background-color: #c3e6c3;
+  background-color: #a2cea2;
   padding: 10px;
   border-radius: 50%;
   transition: all 0.2s ease-in-out;
