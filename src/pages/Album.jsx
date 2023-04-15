@@ -4,6 +4,7 @@ import getMusics from '../services/musicsAPI';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './Album.css';
 
 class Album extends Component {
   state = {
@@ -32,26 +33,27 @@ class Album extends Component {
     const { musics, collectionInfo, favoriteMusics } = this.state;
 
     return (
-      <div data-testid="page-album">
-        Album
+      <div data-testid="page-album" className='page-album'>
         <Header />
-        {musics.length > 0
-          ? (
-            <div>
-              <h1 data-testid="artist-name">{collectionInfo.artistName}</h1>
-              <h1 data-testid="album-name">{collectionInfo.collectionName}</h1>
-              {musics.map((music, index) => (
-                <MusicCard
-                  favoriteMusics={ favoriteMusics }
-                  key={ index }
-                  trackName={ music.trackName }
-                  previewUrl={ music.previewUrl }
-                  trackId={ music.trackId }
-                  music={ music }
-                  updateSongs={ this.updateSongs }
-                />
-              ))}
-            </div>) : null}
+        <h1 data-testid="artist-name">{collectionInfo.artistName}</h1>
+        <h1 data-testid="album-name">{collectionInfo.collectionName}</h1>
+        <div className='musics'>
+          {musics.length > 0
+            ? (
+              <div>
+                {musics.map((music, index) => (
+                  <MusicCard
+                    favoriteMusics={ favoriteMusics }
+                    key={ index }
+                    trackName={ music.trackName }
+                    previewUrl={ music.previewUrl }
+                    trackId={ music.trackId }
+                    music={ music }
+                    updateSongs={ this.updateSongs }
+                  />
+                ))}
+              </div>) : null}
+            </div>
       </div>
     );
   }

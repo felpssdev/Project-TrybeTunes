@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import './Search.css';
 
 class Search extends Component {
   state = {
@@ -34,6 +35,7 @@ class Search extends Component {
       musics: response,
       didAPIrespond: true,
       artistName: inputArtist,
+      isDisabled: true,
     });
   };
 
@@ -41,45 +43,49 @@ class Search extends Component {
     const { inputArtist, isDisabled, didAPIrespond, artistName, musics } = this.state;
 
     return (
-      <div data-testid="page-search">
-        Search
+      <div data-testid="page-search" className='search-page'>
         <Header />
-        <label htmlFor="artist-input">
-          <input
-            type="text"
-            name="artist-input"
-            id="artist-input"
-            value={ inputArtist }
-            onChange={ (event) => this.handleChange(event) }
-            placeholder="Nome do artista"
-            data-testid="search-artist-input"
-          />
-        </label>
-        <button
-          data-testid="search-artist-button"
-          disabled={ isDisabled }
-          onClick={ this.handleClick }
-        >
-          Pesquisar
-        </button>
+        <div className='search-input'>
+          <label htmlFor="artist-input">
+            <input
+              type="text"
+              name="artist-input"
+              id="artist-input"
+              value={ inputArtist }
+              onChange={ (event) => this.handleChange(event) }
+              placeholder="Nome do artista"
+              data-testid="search-artist-input"
+            />
+          </label>
+          <button
+            data-testid="search-artist-button"
+            disabled={ isDisabled }
+            onClick={ this.handleClick }
+          >
+            Pesquisar
+          </button>
+        </div>
         {artistName
-          && didAPIrespond ? <p>{`Resultado de álbuns de: ${artistName}`}</p> : null}
-        <section>
+          && didAPIrespond ? <h2>Resultado de álbuns de: <span className='band'>{artistName}</span></h2>: <h2>Faça uma busca!</h2>}
+        <section className='search-albuns'>
           {musics.length > 0 ? musics.map((music, index) => (
-            <div key={ index }>
-              <p>{music.artistName}</p>
+            <div key={ index } className='albuns'>
               <img src={ music.artworkUrl100 } alt={ music.artistName } />
-              <p>{music.collectionName}</p>
+              <div className='album-info'>
+                <p>{music.artistName}</p>
+                <p>{music.collectionName}</p>
+              </div>
               <Link
                 to={ `/album/${music.collectionId}` }
                 data-testid={ `link-to-album-${music.collectionId}` }
+                className="link"
               >
-                Músicas
+              <p className='circle'>🎧</p>
               </Link>
             </div>
           )) : null}
         </section>
-        {didAPIrespond && musics.length === 0 ? <p>Nenhum álbum foi encontrado</p> : null}
+        {didAPIrespond && musics.length === 0 ? <h2>Nenhum álbum foi encontrado</h2> : null}
       </div>
     );
   }

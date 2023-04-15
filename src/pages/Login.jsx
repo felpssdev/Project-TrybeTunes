@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import './Login.css';
+import logo from '../img/logo.png';
 
 class Login extends Component {
   state = {
@@ -55,20 +57,27 @@ class Login extends Component {
             data-testid="page-login"
             className="login-section"
           >
-            <h1>Login</h1>
-            <label htmlFor="name-input">
-              <input
-                type="text"
-                name="name"
-                id="name-input"
-                data-testid="login-name-input"
-                placeholder="Usuário"
-                value={ name }
-                onChange={ (event) => this.handleChange(event) }
-              />
-            </label>
+            <img src={logo} />
+
+            <div className='name'>
+              <label htmlFor="name-input">
+                <input
+                  className='input'
+                  type="text"
+                  name="name"
+                  id="name-input"
+                  data-testid="login-name-input"
+                  placeholder="Usuário*"
+                  value={ name }
+                  onChange={ (event) => this.handleChange(event) }
+                />
+              </label>
+            </div>
+
+            <div className='email'>
             <label htmlFor="email-input">
               <input
+                className='input'
                 type="email"
                 name="email"
                 id="email-input"
@@ -77,32 +86,43 @@ class Login extends Component {
                 onChange={ (event) => this.handleChange(event) }
               />
             </label>
-            <label htmlFor="image-input">
-              <input
-                type="text"
-                name="image"
-                id="image-input"
-                placeholder="Caminho para a imagem"
-                value={ image }
-                onChange={ (event) => this.handleChange(event) }
-              />
-            </label>
-            <label htmlFor="description-input">
-              <input
-                type="textarea"
-                name="description"
-                id="description-input"
-                placeholder="Descrição"
-                value={ description }
-                onChange={ (event) => this.handleChange(event) }
-              />
-            </label>
+            </div>
+            
+            <div className='image'>
+              <label htmlFor="image-input">
+                <input
+                  className='input'
+                  type="text"
+                  name="image"
+                  id="image-input"
+                  placeholder="Caminho para a imagem"
+                  value={ image }
+                  onChange={ (event) => this.handleChange(event) }
+                />
+              </label>
+            </div>
+            
+            <div className='description'>
+              <label htmlFor="description-input">
+                <input
+                  className='input'
+                  type="textarea"
+                  name="description"
+                  id="description-input"
+                  placeholder="Descrição"
+                  value={ description }
+                  onChange={ (event) => this.handleChange(event) }
+                />
+              </label>
+            </div>
+            
             <button
+              className='login-btn'
               data-testid="login-submit-button"
               disabled={ isDisabled }
               onClick={ () => this.userLogin(user) }
             >
-              Atualizar
+              Entrar
             </button>
           </div>)
     );

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 import musicObjectPropTypes from '../services/musicObjectPropTypes';
+import './MusicCard.css';
 
 class MusicCard extends Component {
   state = {
@@ -53,7 +54,7 @@ class MusicCard extends Component {
     return (
       isLoading ? <Loading />
         : (
-          <div>
+          <div className='card'>
             <h2>{ trackName }</h2>
             <audio data-testid="audio-component" src={ previewUrl } controls>
               <track kind="captions" />

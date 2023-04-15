@@ -1,0 +1,43 @@
+header {
+  border: 1px solid black;
+  background-color: black;
+  color: #CCCCCC;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  margin: 20px 0 0 30px;
+  display: flex;
+}
+
+.nav-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  width: 300px;
+}
+
+.nav-links p {
+  color: #CCCCCC;
+  padding: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-links p:hover {
+  color: white;
+  font-size: 17px;
+  height: 17px;
+}
+
+.logo {
+  height: 60px;
+}
+
+
