@@ -25,13 +25,16 @@ class Album extends Component {
   }
 
   updateSongs = async () => {
+    const { favoriteMusics } = this.state;
     const newFavorites = await getFavoriteSongs();
-    this.setState({ favoriteMusics: newFavorites });
+    if ( favoriteMusics !== newFavorites ) {
+      this.setState({ favoriteMusics: newFavorites });
+    }
   };
 
   render() {
     const { musics, collectionInfo, favoriteMusics } = this.state;
-
+    
     return (
       <div data-testid="page-album" className='page-album'>
         <Header />

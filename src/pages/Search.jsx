@@ -67,6 +67,7 @@ class Search extends Component {
         </div>
         {artistName
           && didAPIrespond ? <h2>Resultado de álbuns de: <span className='band'>{artistName}</span></h2>: <h2>Faça uma busca!</h2>}
+        {didAPIrespond && musics.length === 0 ? <h2>Nenhum álbum foi encontrado</h2> : null}
         <section className='search-albuns'>
           {musics.length > 0 ? musics.map((music, index) => (
             <div key={ index } className='albuns'>
@@ -85,7 +86,6 @@ class Search extends Component {
             </div>
           )) : null}
         </section>
-        {didAPIrespond && musics.length === 0 ? <h2>Nenhum álbum foi encontrado</h2> : null}
       </div>
     );
   }
