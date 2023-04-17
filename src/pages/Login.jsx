@@ -9,7 +9,7 @@ class Login extends Component {
   state = {
     name: '',
     email: '',
-    image: '',
+    image: 'https://img.myloview.com.br/adesivos/default-avatar-profile-icon-vector-social-media-user-image-400-205124837.jpg',
     description: '',
     isDisabled: true,
     isLoading: false,
@@ -86,20 +86,6 @@ class Login extends Component {
                 onChange={ (event) => this.handleChange(event) }
               />
             </label>
-            </div>
-            
-            <div className='image'>
-              <label htmlFor="image-input">
-                <input
-                  className='input'
-                  type="text"
-                  name="image"
-                  id="image-input"
-                  placeholder="Caminho para a imagem"
-                  value={ image }
-                  onChange={ (event) => this.handleChange(event) }
-                />
-              </label>
             </div>
             
             <div className='description'>

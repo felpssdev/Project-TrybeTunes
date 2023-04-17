@@ -3,12 +3,8 @@
   padding: 0;
 }
 
-.root {
-  width: 100vh;
-}
-
 main {
-  height: 1000px;
+  height: 100vh;
   font-family: Lato, sans-serif;
-  background: linear-gradient(to bottom, #000000, #333333);
+  background: linear-gradient(to bottom, #000000, #4d4d4d);
 }

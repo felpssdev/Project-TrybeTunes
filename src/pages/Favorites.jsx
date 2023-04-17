@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import './Favorite.css';
 
 class Favorites extends Component {
   state = {
@@ -14,12 +15,10 @@ class Favorites extends Component {
     this.setState({ isLoading: true });
     const favoriteSongs = await getFavoriteSongs();
     if (favoriteSongs.length > 0) {
-      this.setState(
-        {
+      this.setState({
           isLoading: false,
           favoriteMusics: favoriteSongs,
-        },
-      );
+      });
     } else {
       this.setState({ isLoading: false });
     }
@@ -36,20 +35,19 @@ class Favorites extends Component {
     return (
       isLoading ? <Loading />
         : (
-          <div data-testid="page-favorites">
+          <div className='favorites-page'>
             <Header />
             <h1>Favoritas</h1>
-            <div>
+            <div className='favorites-musics'>
               {favoriteMusics.length > 0 ? favoriteMusics.map((music, index) => (
-                <MusicCard
-                  favoriteMusics={ favoriteMusics }
-                  key={ index }
-                  trackName={ music.trackName }
-                  previewUrl={ music.previewUrl }
-                  trackId={ music.trackId }
-                  music={ music }
-                  updateSongs={ this.updateSongs }
-                />
+                <div key={ index }>
+                  <MusicCard
+                    {...music}
+                    favoriteMusics={ favoriteMusics }
+                    music={ music }
+                    updateSongs={ this.updateSongs }
+                  />
+                </div>
               )) : <h2>Ainda não há músicas favoritas</h2>}
             </div>
           </div>)

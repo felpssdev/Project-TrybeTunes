@@ -16,12 +16,11 @@ class Album extends Component {
   async componentDidMount() {
     const { match: { params: { id } } } = this.props;
     const response = await getMusics(id);
-    this.setState(
-      { musics: response.slice(1),
+    this.setState({ 
+        musics: response.slice(1),
         collectionInfo: response[0],
         favoriteMusics: await getFavoriteSongs(),
-      },
-    );
+    });
   }
 
   updateSongs = async () => {
@@ -34,7 +33,7 @@ class Album extends Component {
 
   render() {
     const { musics, collectionInfo, favoriteMusics } = this.state;
-    
+
     return (
       <div data-testid="page-album" className='page-album'>
         <Header />
@@ -53,12 +52,9 @@ class Album extends Component {
               <div>
                 {musics.map((music, index) => (
                   <MusicCard
-                    trackTimeMillis={ music.trackTimeMillis }
                     favoriteMusics={ favoriteMusics }
                     key={ index }
-                    trackName={ music.trackName }
-                    previewUrl={ music.previewUrl }
-                    trackId={ music.trackId }
+                    {...music}
                     music={ music }
                     updateSongs={ this.updateSongs }
                   />

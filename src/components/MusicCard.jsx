@@ -7,9 +7,9 @@ import './MusicCard.css';
 class MusicCard extends Component {
   state = {
     checked: false,
-    isLoading: false,
     isPlaying: false,
     trackTime: '',
+    // removed: false,
   };
 
   audioRef = React.createRef();
@@ -57,15 +57,13 @@ class MusicCard extends Component {
     const { checked } = this.state;
 
     if (checked) {
-      this.setState({ checked: false, isLoading: true, isPlaying: false });
+      this.setState({ checked: false });
       await removeSong(track);
       updateSongs();
-      this.setState({ isLoading: false });
     } else {
-      this.setState({ checked: true, isLoading: true, isPlaying: false });
+      this.setState({ checked: true });
       await addSong(track);
       updateSongs();
-      this.setState({ isLoading: false });
     }
   };
 
@@ -78,7 +76,7 @@ class MusicCard extends Component {
   
   render() {
     const { trackName, previewUrl, trackId, music } = this.props;
-    const { checked, isLoading, trackTime } = this.state;
+    const { checked, trackTime } = this.state;
     const buttonText = this.state.isPlaying ? "Pause" : "Play";
 
     return (
