@@ -26,9 +26,12 @@ class Header extends Component {
               <img src={logo} className="logo" />
             </div>
             <div className='nav-links'>
-              <Link to="/search" style={{ textDecoration: 'none' }} data-testid="link-to-search">
+              <div className='search'>
+                <Link to="/search" style={{ textDecoration: 'none' }} data-testid="link-to-search">
                 <p><i className="fa fa-search" />Pesquisa</p>
               </Link>
+              </div>
+             
               <Link to="/favorites" style={{ textDecoration: 'none' }} data-testid="link-to-favorites">
                 <p><i class="fa-solid fa-heart" />Favoritos</p>
               </Link>

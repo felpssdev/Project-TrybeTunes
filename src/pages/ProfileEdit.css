@@ -1,0 +1,115 @@
+.page-profile-edit {
+  color: #CCCCCC;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit-main {
+  display: flex;
+  align-self: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+.profile-edit-input {
+  align-self: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.08);
+  height: 360px;
+  width: 300px;
+  margin-top: 21px;
+  border-radius: 10px;
+  color: #5cb85c;
+}
+
+.name-input, .email-input, .description-input, .image-input {
+  margin-top: 20px;
+}
+
+.input {
+  text-align: center;
+  border: none;
+  padding: 10px 5px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.25);
+}
+
+.update-btn {
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  width: 100px;
+  align-self: center;
+}
+
+.update-btn:enabled {
+  background-color: #5cb85c; /* Verde claro */
+  color: white;
+  cursor: pointer;
+}
+
+.update-btn:disabled {
+  background-color: #a2cea2; /* Verde mais claro */
+  color: white;
+  cursor: not-allowed;
+}
+
+.profile-edit-preview {
+  margin: 30px 0 30px 0;
+  width: 600px;
+}
+
+.profile-edit-preview h3{
+  margin-bottom: 30px;
+}
+
+.profile-edit-content {
+  position: relative;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  align-self: center;
+  width: 500px;
+  height: 360px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-edit-content img {
+  height: 80px;
+  border-radius: 50%;
+}
+
+.profile-edit-info {
+  background-color: rgba(255, 255, 255, 0.05);
+  margin: 40px 40px;
+  width: 240px;
+  max-height: 210px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 30px;
+  border-radius: 10px;
+  font-size: small;
+}
+
+.profile-edit-info h3 {
+  font-size: small;
+  margin-bottom: 30px;
+}
+
+.profile-edit-pic-name {
+  font-size: small;
+  margin: 50px 0px 0px 40px;
+}
+
+.profile-edit-edit {
+  margin: 40px 0 0 0;
+}
+
